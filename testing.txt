@@ -1,2 +1,10 @@
+*********************
+Start of testing.txt
+*********************
+
 This file is added from a new clone.
-Now I've added a new line. 
+Now I added a new line.
+
+*********************
+End of testing.txt
+*********************
