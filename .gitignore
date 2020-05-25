@@ -100,3 +100,11 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Specifiying other files for git to ignore and not add to repository
+#Emacs
+*~
+
+# temporary data files
+*.in
+*.out
