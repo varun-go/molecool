@@ -2,7 +2,7 @@
 Atom data 
 """
 
-    atomic_weights = {
+atomic_weights = {
         'H': 1.00784,
         'C': 12.0107,
         'N': 14.0067,
@@ -13,7 +13,7 @@ Atom data
         'Br': 79.904,
     }
 
-    atom_colors = {
+atom_colors = {
         'H': 'white',
         'C': '#D3D3D3',
         'N': '#add8e6',
