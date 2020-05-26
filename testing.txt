@@ -4,6 +4,7 @@ Start of testing.txt
 
 This file is added from a new clone.
 Now I added a new line.
+A new line is added for testing.
 I added this line form the GitHub web interface.
 
 *********************
