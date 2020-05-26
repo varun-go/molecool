@@ -76,6 +76,8 @@ def calculate_distance(rA, rB):
     dist_vec = (rA-rB)
     distance = np.linalg.norm(dist_vec)
 
-    if dist == 0.0:
-        raise Exception("Two atoms are located at the same point.")
-    return dist
+    # if distance == 0.0:
+    #     print(distance + rA + rB)
+    #     raise Exception("Two atoms are located at the same point.")
+
+    return distance
