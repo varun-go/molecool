@@ -4,7 +4,7 @@ Functions for manipulating xyz files.
 import os
 import numpy as np
 
- def open_xyz(file_location):
+def open_xyz(file_location):
     
     # Open an xyz file and return symbols and coordinates.
     xyz_file = np.genfromtxt(fname=file_location, skip_header=2, dtype='unicode')
