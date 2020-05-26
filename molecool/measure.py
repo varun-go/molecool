@@ -5,14 +5,12 @@ Functions for calculations
 import numpy as np
 
 def calculate_angle(rA, rB, rC, degrees=False):
-    """
-    Calculate the angle between three points. 
+    """Calculate the angle between three points. 
 
     Parameters
     ----------
     rA, rB, rC : np.ndarray
-        The coordinates of each point.
-        
+        The coordinates of each point. 
     degrees : boolean, optional
         Specifies whether angle should be in degrees.
 

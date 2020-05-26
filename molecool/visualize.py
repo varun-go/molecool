@@ -6,23 +6,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def draw_molecule(coordinates, symbols, draw_bonds=None, save_location=None, dpi=300):
-    """
-    Draw a picture of the molecule.
+    """Draw a picture of the molecule.
 
     Parameters
     ----------
-    coordinates : array
-        Array with all the molecule's atoms.
-
+    coordinates : np.ndarray
+        Coordinates of all the atoms.
     symbols : list
         List of strings containing atomic symbols.
-
     draw_bonds : list
         Specifies which bonds to be drawn (?)
-
     save_location : string, optional
         File path for saving histogram.
-
     dpi : integer, optional
         Resolution specification as dots per square inch of display.
 
@@ -37,7 +32,7 @@ def draw_molecule(coordinates, symbols, draw_bonds=None, save_location=None, dpi
     # Throwing exceptions
     if len(coordinates) != len(symbols):
         raise Exception("The number of atomic positions and the number of atomic symbols DO NOT match.")
-    
+
     # Create figure
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
@@ -68,24 +63,19 @@ def draw_molecule(coordinates, symbols, draw_bonds=None, save_location=None, dpi
     return ax
 
 def bond_histogram(bond_list, save_location=None, dpi=300, graph_min=0, graph_max=2):
-    """
-    Draw a histogram of bond lengths.
+    """Draw a histogram of bond lengths.
 
     Parameters
     ----------
     bond_list : list
-        List containing all bond lengths.
-        
+        List containing all bond lengths.   
     save_location : string, optional
         File path for saving histogram.
-
-    dpi : integer, optional
+    dpi : int (optional)
         Resolution specification as dots per square inch of display.
-
-    graph_min : integer
+    graph_min : int
         Minimum integer value on y-axis. 
-
-    graph_max : integer
+    graph_max : int
         Maximum integer value on y-axis.
 
     Returns

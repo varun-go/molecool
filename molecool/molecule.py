@@ -5,32 +5,32 @@ Functions associated with a molecule.
 from .measure import calculate_distance 
 
 def build_bond_list(coordinates, max_bond=1.5, min_bond=0):
-    """
-    Find the bonds in a molecule (set of coordinates) based on distance criteria.
+    """Find the bonds in a molecule (set of coordinates) based on distance criteria.
+
+    The pairwise distance between atoms is computed. If the distance 
+    is within the range 'min_bond' and 'max_bond", the atoms are counted as bonded.
 
     Parameters
     ----------
-    coordinates : list 
-        A list of numpy.arrays corresponding to atomic locations.
-
-    max_bond : float, optional
-        Specifies the maximum for the bond length.
-
-    min_bond : float, optional
-        Specifies the minimum for the bond length.
+    coordinates : np.ndarray 
+        The coordinates of the atoms.
+    max_bond : float (optional)
+        The maximum distance to be considered bonded. Default = 1.5
+    min_bond : float (optional)
+        The minimum distance to be considered bonded. Default = 0
 
     Returns
     -------
-    ax : histogram
-        A histogram representation of all bond lengths.
-
+    bonds : dict
+        A dictionary where the keys are tuples of the bonded atom indices,
+        and the associated values are the bond lengths.
     """ 
 
     # Throwing exceptions
     if min_bond < 0:
         raise ValueError("Minimum bond length cannot be less than 0")
-    
-       
+
+
     # Find the bonds in a molecule (set of coordinates) based on distance criteria.
     bonds = {}
     num_atoms = len(coordinates)
