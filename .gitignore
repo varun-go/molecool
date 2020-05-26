@@ -108,3 +108,6 @@ ENV/
 # temporary data files
 *.in
 *.out
+
+# vscode files
+.vscode/
