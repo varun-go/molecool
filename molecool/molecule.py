@@ -3,6 +3,7 @@ Functions associated with a molecule.
 """
 
 from .measure import calculate_distance 
+from .atom_data import atomic_weights
 
 def build_bond_list(coordinates, max_bond=1.5, min_bond=0):
     """Return the bonds in a system based on bond distance criteria.
@@ -44,17 +45,22 @@ def build_bond_list(coordinates, max_bond=1.5, min_bond=0):
     return bonds
 
 def calculate_molecular_mass(symbols):
-   """Calculate the mass of a molecule.
-   
-   Parameters
-   ----------
-   symbols : list
-       A list of elements.
-   
-   Returns
-   -------
-   mass : float
-       The mass of the molecule
-   """
-   pass
+    """Calculate the mass of a molecule.
+    
+    Parameters
+    ----------
+    symbols : list
+        A list of elements.
+    
+    Returns
+    -------
+    mass : float
+        The mass of the molecule
+    """
+    mass = 0.0
+
+    for atom in symbols:
+       mass  += atomic_weights[atom]
+
+    return mass
 
