@@ -5,7 +5,7 @@ Functions associated with a molecule.
 from .measure import calculate_distance 
 
 def build_bond_list(coordinates, max_bond=1.5, min_bond=0):
-    """Find the bonds in a molecule (set of coordinates) based on distance criteria.
+    """Return the bonds in a system based on bond distance criteria.
 
     The pairwise distance between atoms is computed. If the distance 
     is within the range 'min_bond' and 'max_bond", the atoms are counted as bonded.
@@ -28,7 +28,7 @@ def build_bond_list(coordinates, max_bond=1.5, min_bond=0):
 
     # Throwing exceptions
     if min_bond < 0:
-        raise ValueError("Minimum bond length cannot be less than 0")
+        raise ValueError("Invalid minimum bond distance entered! Minimum bond       distance must be greater than zero!")
 
 
     # Find the bonds in a molecule (set of coordinates) based on distance criteria.
