@@ -42,3 +42,14 @@ def test_molecular_mass():
     # assertion below checks if calculated_mass is approximately equal to 
     # actual_mass with absolute range on difference.
     assert calculated_mass == pytest.approx(actual_mass, abs=1e-2)
+
+def test_center_of_mass():
+    symbols = np.array(['C', 'H', 'H', 'H', 'H'])
+    coordinates = np.array([[1,1,1], [2.4,1,1], [-0.4, 1, 1], [1, 1, 2.4], [1, 1, -0.4]])
+
+    center_of_mass = molecool.calculate_center_of_mass(symbols, coordinates)
+
+    expected_center = np.array([1,1,1])
+
+    assert center_of_mass.all() == expected_center.all()
+
