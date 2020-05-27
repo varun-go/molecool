@@ -3,9 +3,11 @@ Functions associated with a molecule.
 """
 
 from .measure import calculate_distance 
+from .atom_data import atomic_weights
+import numpy as np
 
 def build_bond_list(coordinates, max_bond=1.5, min_bond=0):
-    """Find the bonds in a molecule (set of coordinates) based on distance criteria.
+    """Return the bonds in a system based on bond distance criteria.
 
     The pairwise distance between atoms is computed. If the distance 
     is within the range 'min_bond' and 'max_bond", the atoms are counted as bonded.
@@ -28,7 +30,7 @@ def build_bond_list(coordinates, max_bond=1.5, min_bond=0):
 
     # Throwing exceptions
     if min_bond < 0:
-        raise ValueError("Minimum bond length cannot be less than 0")
+        raise ValueError("Invalid minimum bond distance entered! Minimum bond       distance must be greater than zero!")
 
 
     # Find the bonds in a molecule (set of coordinates) based on distance criteria.
@@ -42,3 +44,63 @@ def build_bond_list(coordinates, max_bond=1.5, min_bond=0):
                 bonds[(atom1, atom2)] = distance
 
     return bonds
+
+def calculate_molecular_mass(symbols):
+    """Calculate the mass of a molecule.
+    
+    Parameters
+    ----------
+    symbols : list
+        A list of elements.
+    
+    Returns
+    -------
+    mass : float
+        The mass of the molecule
+    """
+    mass = 0.0
+
+    for atom in symbols:
+       mass  += atomic_weights[atom]
+
+    return mass
+
+def calculate_center_of_mass(symbols, coordinates):
+    """Calculate the center of mass of a molecule.
+    
+    The center of mass is weighted by each atom's weight.
+    
+    Parameters
+    ----------
+    symbols : list
+        A list of elements for the molecule
+    coordinates : np.ndarray
+        The coordinates of the molecule.
+    
+    Returns
+    -------
+    center_of_mass: np.ndarray
+        The center of mass of the molecule.
+
+    Notes
+    -----
+    The center of mass is calculated with the formula
+    
+    .. math:: \\vec{R}=\\frac{1}{M} \\sum_{i=1}^{n} m_{i}\\vec{r_{}i}
+    
+    """
+
+    total_mass = calculate_molecular_mass(symbols)
+    center_of_mass = np.array([0.0,0.0,0.0])
+
+    for atom_number in range(len(symbols)):
+        
+        atom_type = symbols[atom_number]
+        mass_of_atom = atomic_weights[atom_type]
+        atom_position = coordinates[atom_number]
+
+        center_of_mass += mass_of_atom * atom_position
+
+    center_of_mass = center_of_mass/total_mass
+
+    return center_of_mass
