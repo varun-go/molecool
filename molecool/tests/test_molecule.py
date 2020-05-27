@@ -51,5 +51,4 @@ def test_center_of_mass():
 
     expected_center = np.array([1,1,1])
 
-    assert center_of_mass.all() == expected_center.all()
-
+    assert np.array_equal(expected_center, center_of_mass)
