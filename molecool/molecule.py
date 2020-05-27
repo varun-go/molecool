@@ -4,6 +4,7 @@ Functions associated with a molecule.
 
 from .measure import calculate_distance 
 from .atom_data import atomic_weights
+import numpy as np
 
 def build_bond_list(coordinates, max_bond=1.5, min_bond=0):
     """Return the bonds in a system based on bond distance criteria.
@@ -65,31 +66,41 @@ def calculate_molecular_mass(symbols):
     return mass
 
 def calculate_center_of_mass(symbols, coordinates):
-   """Calculate the center of mass of a molecule.
-   
-   The center of mass is weighted by each atom's weight.
-   
-   Parameters
-   ----------
-   symbols : list
-       A list of elements for the molecule
-   coordinates : np.ndarray
-       The coordinates of the molecule.
-   
-   Returns
-   -------
-   center_of_mass: np.ndarray
-       The center of mass of the molecule.
+    """Calculate the center of mass of a molecule.
+    
+    The center of mass is weighted by each atom's weight.
+    
+    Parameters
+    ----------
+    symbols : list
+        A list of elements for the molecule
+    coordinates : np.ndarray
+        The coordinates of the molecule.
+    
+    Returns
+    -------
+    center_of_mass: np.ndarray
+        The center of mass of the molecule.
 
-   Notes
-   -----
-   The center of mass is calculated with the formula
-   
-   .. math:: \\vec{R}=\\frac{1}{M} \\sum_{i=1}^{n} m_{i}\\vec{r_{}i}
-   
-   """
+    Notes
+    -----
+    The center of mass is calculated with the formula
+    
+    .. math:: \\vec{R}=\\frac{1}{M} \\sum_{i=1}^{n} m_{i}\\vec{r_{}i}
+    
+    """
 
-   return np.array([])
+    total_mass = calculate_molecular_mass(symbols)
+    center_of_mass = np.array([0.0,0.0,0.0])
 
+    for atom_number in range(len(symbols)):
+        
+        atom_type = symbols[atom_number]
+        mass_of_atom = atomic_weights[atom_type]
+        atom_position = coordinates[atom_number]
 
+        center_of_mass += mass_of_atom * atom_position
 
+    center_of_mass = center_of_mass/total_mass
+
+    return center_of_mass
