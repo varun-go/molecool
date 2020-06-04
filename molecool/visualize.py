@@ -100,9 +100,12 @@ def bond_histogram(bond_list, save_location=None, dpi=300, graph_min=0, graph_ma
     lengths = []
     for atoms, bond_length in bond_list.items():
         lengths.append(bond_length)
+
     bins = np.linspace(graph_min, graph_max)
+
     fig = plt.figure()
     ax = fig.add_subplot(111)
+
     plt.xlabel('Bond Length (angstrom)')
     plt.ylabel('Number of Bonds')
 

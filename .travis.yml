@@ -2,6 +2,12 @@ language: python
 
 # Run jobs on container-based infrastructure, can be overridden per job
 
+# Limit Travic CI runs on events on the master branch only
+# safelist
+branches: 
+  only:
+    - master
+
 matrix:
   include:
     # Extra includes for OSX since python language is not available by default on OSX
@@ -20,7 +26,8 @@ matrix:
       language: generic
       env: PYTHON_VER=3.7
 
-
+# tells Travis what to do before installing things bellow
+# these are the exact commands that will be run
 before_install:
     # Additional info about the build
   - uname -a
@@ -40,8 +47,11 @@ install:
     # Build and install package
   - python setup.py develop --no-deps
 
+# the following lines is what will be run each of the environments on all the systems
+# specified within the matrix section
 
 script:
+  # terminal commands
   - pytest -v --cov=molecool molecool/tests/
 
 notifications:
