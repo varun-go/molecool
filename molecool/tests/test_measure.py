@@ -47,4 +47,19 @@ def test_calculate_angle_many(r1, r2, r3, expected_angle):
 
     calculated_angle = molecool.calculate_angle(r1, r2, r3, degrees=True)
 
-    assert expected_angle == pytest.approx(calculated_angle), F'{calculated_angle} {expected_angle}'
+    assert expected_angle == pytest.approx(calculated_angle)
+
+
+@pytest.mark.parametrize(
+    "r1, r2, r3, expected_radians",
+    [ 
+        (np.array([np.sqrt(2) / 2, np.sqrt(2) / 2, 0.0]), np.array([0.0, 0.0, 0.0]), np.array([1.0, 0.0, 0.0]), np.radians(45)),
+        (np.array([0, 0, -1]), np.array([0, 1, 0]), np.array([1, 0, 0]), np.radians(60)),
+        (np.array([np.sqrt(3) / 2, (1 / 2), 0]), np.array([0, 0, 0]), np.array([1, 0, 0]), np.radians(30)),
+    ]
+    )
+def test_calculate_angle_radians(r1, r2, r3, expected_radians):
+
+    calculated_radians = molecool.calculate_angle(r1, r2, r3)
+
+    assert expected_radians == pytest.approx(calculated_radians)
