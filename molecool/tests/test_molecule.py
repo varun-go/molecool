@@ -5,8 +5,8 @@ import numpy as np
 import pytest
 import pdb
 
-
 # TEST FIXTURES
+# this fixture can be called in any of the tests below
 @pytest.fixture()
 def methane_molecule():
     symbols = ['C', 'H', 'H', 'H', 'H']
@@ -16,13 +16,13 @@ def methane_molecule():
 
 # TEST FUNCTIONS
 
-
 def test_move_methane(methane_molecule):
     symbols, coordinates = methane_molecule
 
     coordinates[0] += 5
 
-
+# # the skip function wraps the function build_bond_list
+# @pytest.mark.slow
 def test_build_bond_list(methane_molecule):
     ''' Tests the build_bond_list function. There are multiple sub-tests.'''
 
