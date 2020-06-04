@@ -1,7 +1,7 @@
 molecool
 ==============================
 [//]: # (Badges)
-[![Travis Build Status](https://travis-ci.com/REPLACE_WITH_OWNER_ACCOUNT/molecool.svg?branch=master)](https://travis-ci.com/varun-go/molecool)
+[![Travis Build Status](https://travis-ci.com/REPLACE_WITH_OWNER_ACCOUNT/molecool.svg?branch=master)](https://travis-ci.com/github/varun-go/molecool)
 [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/REPLACE_WITH_APPVEYOR_LINK/branch/master?svg=true)](https://ci.appveyor.com/project/REPLACE_WITH_OWNER_ACCOUNT/molecool/branch/master)
 [![codecov](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/molecool/branch/master/graph/badge.svg)](https://codecov.io/gh/varun-go/molecool/branch/master)
 
