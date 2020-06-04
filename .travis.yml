@@ -2,7 +2,7 @@ language: python
 
 # Run jobs on container-based infrastructure, can be overridden per job
 
-# Limit Travic CI runs on events on the master branch only
+# Limit Travis CI to runs on events on the master branch only
 # safelist
 branches: 
   only:
